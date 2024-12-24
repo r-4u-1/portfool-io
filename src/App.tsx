@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Navigation } from "./components/Navigation/Navigation";
+import { TimeLine } from "./components/TimeLine/TimeLine";
+import Mountain from "./components/Mountain/Mountain";
+import Portfolio from "./components/Portfolio/Portfolio";
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div id="home">
+      <Navigation />
+      {/*<Spline
+        scene="https://prod.spline.design/rOQGsMaKWtxiCRjc/scene.splinecode"
+        className="spline"
+      />*/}
+      <Mountain />
+      <main>
+        {/* About section */}
+        <section id="about" className="about">
+          <img src="img/plio.webp" alt="About" />
+          <h2>About</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+            odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+            quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+            mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad
+            litora torquent per conubia nostra, per inceptos himenaeos.
+            Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.
+          </p>
+        </section>
+        {/* Timeline section */}
+        <TimeLine />
+        <Portfolio />
+      </main>
+    </div>
+  );
+};
 
-export default App
+export default App;

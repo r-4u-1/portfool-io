@@ -1,0 +1,68 @@
+
+:root {
+    --color-background: #000119;
+    --stroke-width: calc(1em / 16);
+    --font-size: 30vmin;
+    --font-weight: 700;
+    --letter-spacing: calc(1em / 8);
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+  
+  .hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, #000, #111 70%, #000);
+    overflow: hidden;
+    background-color: var(--color-background);
+  display: grid;
+  }
+  
+  .hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .glass-effect-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    /* font-family: "Atomic Age", system-ui; */
+    font-family: "Bungee Hairline", sans-serif;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); /* Add a glow */
+    z-index: 1;
+    mix-blend-mode: lighten; /* Ensures text integrates with the glass effect */
+  }
+  
+
+  
+
+
+
+  
+  h1 {
+    /* font-family: "Atomic Age", system-ui; */
+    font-family: "Bungee Hairline", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    background-clip: text;
+    
+    background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+    color: var(--color-background);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    letter-spacing: var(--letter-spacing);
+    padding: calc(--stroke-width / 2);
+    -webkit-text-stroke-color: transparent;
+    -webkit-text-stroke-width: var(--stroke-width);
+  }
