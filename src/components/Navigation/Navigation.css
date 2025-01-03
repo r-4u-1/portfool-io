@@ -10,3 +10,215 @@
     color: #fff;
     font-family: 'Quicksand', sans-serif; */
 }
+
+
+.nav-container {
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+  
+  
+  }
+  nav {
+    right: 20px;
+    left: 20px;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+    position: fixed;
+    background: #191a1f;
+    top: 0px;
+    color: white;
+    border-radius: 1rem;
+  
+    padding: 20px;
+    height: 50px;
+  
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Slightly darker shadow */
+    backdrop-filter: blur(10px); /* Blurry effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 2px solid rgba(0, 255, 255, 0.6); /* Lighter, neon-colored border */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8), /* Outer neon glow */
+                0 0 20px rgba(0, 255, 255, 0.6); /* Additional softer glow */
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    list-style: none;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 1s ease-in; 
+    cursor: pointer;
+  }
+  
+  nav a:hover{
+    color: rgb(90, 198, 118);
+    transition: color 0s;
+  }
+  
+  
+  .nav-btn {
+    background-color: transparent; /* Transparent background */
+    color: white; /* White text */
+    border: 2px solid white; /* White border */
+    padding: 10px 20px;  /* Padding for the button */
+    border-radius: 1rem; /* Rounded corners for a nicer look, optional */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for the text */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+  }
+  
+  .nav-btn:hover {
+    background-color: white; /* Background becomes white on hover */
+    color: black; /* Text color changes to black on hover */
+  }
+  
+  
+  .hamburger {
+    display: none; /* Hide the hamburger icon by default */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    border-radius: 0.5rem; /* Rounded corners for a nicer look, optional */
+    padding: 10px; /* Padding for the icon */
+    background-color: rgb(1, 19, 1);
+    color:rgb(90, 198, 118);
+    border: 2px solid white; /* White border */
+  }
+  
+  .hamburger:hover {
+    color: rgb(90, 198, 118); /* Change color on hover */
+  }
+  
+  /* Media query to hide the list and show the hamburger on smaller viewports */
+  @media (max-width: 900px) {
+    nav ul {
+      display: none; /* Hide the navigation list */
+    }
+  
+    .hamburger {
+      display: block; /* Show the hamburger icon */
+    }
+  
+    .drop-down-nav-menu {
+      display: none;
+    }
+  }
+  
+  .nav-menu-inactive {
+    display: none;
+    height: 0px;
+    transition: height 0.5s ease-out; 
+  }
+  
+  /* Define keyframes for sliding down */
+  @keyframes slideDown {
+    0% {
+      /* transform: translateY(-100%); Start above the view */
+      height: 0px; /* Start with no height */
+      opacity: 0; /* Fully transparent */
+    border-radius: 1rem;
+  
+    }
+    100% {
+      height: 300px; /* End at normal height */
+      /*transform: translateY(0);  End at normal position */
+      opacity: 1; /* Fully opaque */
+    border-radius: 1rem;
+  
+    }
+  }
+  
+  .drop-down-nav-menu ul li {
+    opacity: 0;
+    transform: translateX(100%); /* Start off-screen on the right */
+    animation: slideIn 0.5s forwards; /* Slide in over 0.5 seconds */
+    animation-timing-function: ease-out;
+  }
+  
+  .drop-down-nav-menu ul li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  
+  .drop-down-nav-menu ul li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .drop-down-nav-menu ul li:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .drop-down-nav-menu ul li:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  
+  .drop-down-nav-menu ul li:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .drop-down-nav-menu {
+    right: 20px;
+    top: 0px;
+    color: white;
+    padding: 20px;
+    height: 300px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    list-style: none;
+    position: fixed;
+    background-color: #191a1f;
+    z-index: 49;
+    animation: slideDown 0.5s ease-out forwards; /* Apply the slideDown animation */
+  }
+  
+  .drop-down-nav-menu ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    list-style: none;
+    padding-inline-start: 0;
+    
+  }
+  
+  .drop-down-nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 1s ease-in; 
+    cursor: pointer;
+  }
+  
+  
+  .drop-down-nav-menu a:hover{
+    color: rgb(90, 198, 118);
+    transition: color 0s;
+    cursor: pointer;
+  }
+  
