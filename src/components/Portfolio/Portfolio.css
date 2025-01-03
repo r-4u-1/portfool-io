@@ -64,3 +64,18 @@
 .project-card {
     animation: neon 5s linear infinite;
 } */
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .portfolio-container {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        margin: 100px;
+
+flex-direction: column;
+
+align-items: center;
+    }
+  }

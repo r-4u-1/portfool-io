@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --color-background: #000119;
@@ -6,9 +8,6 @@
     --font-weight: 700;
     --letter-spacing: calc(1em / 8);
   }
-  
-  @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
   
   .hero-container {
     position: relative;

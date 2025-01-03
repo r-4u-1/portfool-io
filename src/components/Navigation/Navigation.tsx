@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./Navigation.css";
 
 export const Navigation: React.FC = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -80,16 +81,16 @@ export const Navigation: React.FC = () => {
             <nav ref={navRef}>
                 <ul>
                     <li>
-                        <a href="#home" onClick={() => setIsActive(false)}>Home</a>
+                        <a href="#home" onClick={() => setIsActive(false)}>HOME</a>
                     </li>
                     <li>
-                        <a href="#about" onClick={() => setIsActive(false)}>About</a>
+                        <a href="#about" onClick={() => setIsActive(false)}>ABOUT</a>
                     </li>
                     <li>
-                        <a href="#services" onClick={() => setIsActive(false)}>Services</a>
+                        <a href="#services" onClick={() => setIsActive(false)}>SERVICES</a>
                     </li>
                 </ul>
-                <button className="nav-btn">Contact</button>
+                <button className="nav-btn">CONTACT</button>
                 <button className="hamburger" onClick={() => setIsActive(prev => !prev)}>
                     {isActive ? <span>⤬</span> : <span>&#9776;</span>}
                 </button>
@@ -98,13 +99,13 @@ export const Navigation: React.FC = () => {
                 <div ref={dropDownRef} className="drop-down-nav-menu">
                     <ul>
                         <li>
-                            <a href="#home" onClick={() => setIsActive(false)}>Home</a>
+                            <a href="#home" onClick={() => setIsActive(false)}>HOME</a>
                         </li>
                         <li>
-                            <a href="#about" onClick={() => setIsActive(false)}>About</a>
+                            <a href="#about" onClick={() => setIsActive(false)}>ABOUT</a>
                         </li>
                         <li>
-                            <a href="#services" onClick={() => setIsActive(false)}>Services</a>
+                            <a href="#services" onClick={() => setIsActive(false)}>SERVICES</a>
                         </li>
                     </ul>
                 </div>
