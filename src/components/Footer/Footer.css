@@ -1,0 +1,33 @@
+.footer {
+    background-color: #33333329;
+    padding: 20px;
+    text-align: center;
+    width: 100vw; /* Ensure the footer is as wide as the view */
+    margin-top: 200px; /* Add margin to the top */
+    position: relative;
+    z-index: 1; /* Ensure the footer content is above the wave */
+  }
+
+  .footer__icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px; 
+    z-index: 1; 
+  }
+  
+  .footer__icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 5%;
+    background-color: #01ff38a2;
+    padding: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .footer__bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    color: #fff;
+    z-index: 1;
+  }

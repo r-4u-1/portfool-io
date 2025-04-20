@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 :root {
     --color-background: #000119;
     --stroke-width: calc(1em / 16);
@@ -28,20 +29,7 @@
     z-index: 0;
   }
   
-  .glass-effect-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5rem;
-    font-weight: bold;
-    /* font-family: "Atomic Age", system-ui; */
-    font-family: "Bungee Hairline", sans-serif;
-    text-align: center;
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); /* Add a glow */
-    z-index: 1;
-    mix-blend-mode: lighten; /* Ensures text integrates with the glass effect */
-  }
+ 
   
 
   

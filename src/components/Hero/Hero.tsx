@@ -1,10 +1,17 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, forwardRef } from 'react';
 import './Hero.css';
 
-const Hero: React.FC = () => {
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+}
+
+const Hero = forwardRef<HTMLDivElement>((_, ref) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [text, setText] = useState('');
-  const fullText = "Welcome to My Universe. Let's Build Something Amazing.";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,45 +20,35 @@ const Hero: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    interface Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-    }
-
     const particles: Particle[] = [];
     const maxParticles = 150;
     const neonColors = ['#ff007f', '#7f00ff', '#00fff7', '#00ff7f', '#ff7f00'];
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
     const getRandomColor = () => neonColors[Math.floor(Math.random() * neonColors.length)];
 
     const createParticle = () => {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 2,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        color: getRandomColor(),
-      });
+      if (particles.length < maxParticles) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 2,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          color: getRandomColor(),
+        });
+      }
     };
 
     const animateParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Set shadow properties once per frame
+      ctx.shadowBlur = 15;
+
       particles.forEach((particle, index) => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = particle.color;
+        ctx.shadowColor = particle.color; // Set shadowColor per particle
         ctx.fillStyle = particle.color;
         ctx.fill();
 
@@ -76,10 +73,17 @@ const Hero: React.FC = () => {
       while (particles.length < maxParticles) createParticle();
     };
 
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    // Initialize canvas size and particles
     resizeCanvas();
     addStars();
     animateParticles();
 
+    // Add resize event listener
     window.addEventListener('resize', resizeCanvas);
 
     return () => {
@@ -87,26 +91,13 @@ const Hero: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    let index = 0;
-    const typingInterval = setInterval(() => {
-      if (index < fullText.length) {
-        setText((prev) => prev + fullText[index]);
-        index++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 100);
-
-    return () => clearInterval(typingInterval);
-  }, [fullText]);
-
   return (
-    <div className="hero-container">
-      <canvas ref={canvasRef} className="hero-canvas" />
-      {/*<h1 className="glass-effect-text" style={{ filter: 'url(#glass-effect)' }}>{text}</h1>*/}
+    <div className="hero-container" ref={ref}>
+      <canvas ref={canvasRef} className="hero-canvas">
+        Your browser does not support the canvas element.
+      </canvas>
     </div>
   );
-};
+});
 
 export default Hero;
