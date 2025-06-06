@@ -48,3 +48,22 @@ export default tseslint.config({
   },
 })
 ```
+
+## Contribution Guidelines
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear and concise messages.
+4. Submit a pull request for review.
+
+## Project Structure
+
+- `src/`: Contains the source code.
+- `public/`: Contains static assets.
+- `README.md`: Project documentation.
+
+## Setup Instructions
+
+1. Clone the repository.
+2. Run `npm install` to install dependencies.
+3. Run `npm start` to start the development server.
