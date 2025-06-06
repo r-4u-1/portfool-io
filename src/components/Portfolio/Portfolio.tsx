@@ -39,7 +39,7 @@ const Portfolio: React.FC = () => {
                     id: repo.id,
                     name: repo.name,
                     description: repo.description || 'No description provided.',
-                    image: 'https://via.placeholder.com/150', // TODO: Replace with real image if available
+                    image: 'https://via.placeholder.com/150',
                     link: repo.html_url
                 }));
                 setProjects(formattedProjects);
@@ -89,7 +89,6 @@ const Portfolio: React.FC = () => {
                     name={project.name}
                     description={project.description}
                     url={project.link}
-                    // Optionally pass image if ProjectCard supports it
                 />
             ))}
         </section>

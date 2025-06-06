@@ -69,11 +69,10 @@ interface INavigationProps {
         servicesRef: React.RefObject<HTMLDivElement>;
         contactRef: React.RefObject<HTMLDivElement>;
     };
-    formerColor?: string; // Optional prop for former color
+    formerColor?: string;
 }
 
 export const Navigation = ({ links, activeSection }: INavigationProps) => {
-    // State and hooks
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height } = useDimensions(containerRef);
@@ -83,23 +82,15 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
     const { justifyContent, backgroundColor, navWidth } = useNavbarStyle(scrollyY);
 
     const selected = activeSection ?? 0;
-    // const formerColor = tabs[selected]?.color || "#000";
-    // const { homeRef, aboutRef, servicesRef, contactRef } = sectionRefs;
-    // const sectionRefsArray = [homeRef, aboutRef, servicesRef, contactRef];
-
-    // const { updateActiveSection } = useActiveSection(sectionRefsArray);
     const windowWidth = useWindowSize();
     const { scrollY } = useScroll();
 
-    // Handlers
     const handleLinkClick = (linkAction: () => void) => {
         linkAction();
-        // updateActiveSection(); // Immediately update the active section
     };
 
     return (
         <>
-            {/* Main navigation bar */}
             <motion.nav
                 ref={navRef}
                 className="navbar"
@@ -136,7 +127,6 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
                             animate={{ color: i === selected ? "#fff" : color }}
                             transition={{ duration: 0.3 }}
                             onTap={() => {
-                                // setSelected(i);
                                 handleLinkClick(links[name]);
                             }}
                         >
@@ -145,9 +135,9 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
                                 <motion.div
                                     style={selectionStyle}
                                     layoutId="selected"
-                                    key={selected} // Ensure a unique key for each active section to force re-render
+                                    key={selected}
                                     animate={{ backgroundColor: color }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.5 }} // Adjusted for smoother and more forgiving animations
+                                    transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.5 }}
                                 />
                             )}
                         </motion.li>
@@ -155,7 +145,6 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
                 </ul>
             </motion.nav>
 
-            {/* Sidebar navigation for smaller screens */}
             {windowWidth <= 900 && (
                 <motion.nav
                     initial={false}

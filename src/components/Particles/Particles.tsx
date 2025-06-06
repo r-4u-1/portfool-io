@@ -104,28 +104,23 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
   disableRotation = false,
   className = '',
 }, ref) => {
-  // Use a local ref for the container
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  // Expose the container DOM node to parent via ref
   useImperativeHandle(ref, () => containerRef.current as HTMLDivElement, [containerRef]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Renderer setup
     const renderer = new Renderer({ depth: false, alpha: true });
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
     gl.clearColor(0, 0, 0, 0);
 
-    // Camera setup
     const camera = new Camera(gl, { fov: 15 });
     camera.position.set(0, 0, cameraDistance);
 
-    // Responsive resize
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
@@ -135,7 +130,6 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
     window.addEventListener("resize", resize, false);
     resize();
 
-    // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -147,7 +141,6 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
       container.addEventListener("mousemove", handleMouseMove);
     }
 
-    // Particle data
     const count = particleCount;
     const positions = new Float32Array(count * 3);
     const randoms = new Float32Array(count * 4);
@@ -169,7 +162,6 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
       colors.set(col, i * 3);
     }
 
-    // Geometry and program
     const geometry = new Geometry(gl, {
       position: { size: 3, data: positions },
       random: { size: 4, data: randoms },
@@ -225,7 +217,6 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
 
     animationFrameId = requestAnimationFrame(update);
 
-    // Cleanup
     return () => {
       isUnmounted = true;
       window.removeEventListener("resize", resize);
@@ -236,7 +227,6 @@ const Particles = forwardRef<HTMLDivElement, ParticlesProps>(({
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
       }
-      // Attempt to lose WebGL context for cleanup (optional, safe fallback)
       const loseContext = renderer.gl.getExtension && renderer.gl.getExtension('WEBGL_lose_context');
       if (loseContext && typeof loseContext.loseContext === 'function') {
         loseContext.loseContext();

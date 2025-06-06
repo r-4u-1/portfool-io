@@ -19,7 +19,7 @@ const useActiveSection = (sectionRefs: React.RefObject<HTMLDivElement>[], offset
     };
 
     window.addEventListener('scroll', handleScroll);
-    updateActiveSection(); // Initialize active section on mount
+    updateActiveSection();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

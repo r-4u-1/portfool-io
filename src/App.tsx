@@ -97,7 +97,6 @@ const App: React.FC = () => {
         ref={homeRef}
       />
       </div>
-      {/* <Hero ref={homeRef}/> */}
       <main>
         <ScrollText baseVelocity={-0.5}>Framer Motion</ScrollText>
         <ScrollText baseVelocity={0.5}>Scroll velocity</ScrollText>
