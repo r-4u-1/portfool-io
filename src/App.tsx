@@ -2,7 +2,6 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { TimeLine } from "./components/TimeLine/TimeLine";
 import Portfolio from "./components/Portfolio/Portfolio";
 import './App.css'
-import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import { ScrollText } from "./components/ScrollText/ScrollText";
 import IconGrid from "./components/IconGrid/IconGrid";
@@ -10,25 +9,31 @@ import Footer from "./components/Footer/Footer";
 import React, { useRef } from "react";
 import {useScrollToSection} from "./hooks/useScrollToSection";
 import AnimatedImage from "./components/AnimatedImage/AnimatedImage";
-import BackgroundImage from "./components/BackgroundImage/BackgroundImage";
 import useAnimatedImage from "./hooks/useAnimatedImage";
+import Particles from "./components/Particles/Particles";
 
 const App: React.FC = () => {
-  // Section refs
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
   const sectionRefs = [homeRef, aboutRef, servicesRef, contactRef];
-  const { activeSection, scrollToSection } = useScrollToSection(sectionRefs);
 
-  // Navigation links
+  const tabs = [
+    { name: "HOME", color: "#f00" },
+    { name: "ABOUT", color: "#0c0" },
+    { name: "SERVICES", color: "#b1f" },
+    { name: "CONTACT", color: "#f90" },
+  ];
+
+  const { activeSection,formerColor, scrollToSection } = useScrollToSection(sectionRefs, tabs);
+
   const links = {
-    HOME: () => scrollToSection(homeRef),
-    ABOUT: () => scrollToSection(aboutRef),
-    SERVICES: () => scrollToSection(servicesRef),
-    CONTACT: () => scrollToSection(contactRef),
+    HOME: () => scrollToSection(0),
+    ABOUT: () => scrollToSection(1),
+    SERVICES: () => scrollToSection(2),
+    CONTACT: () => scrollToSection(3),
   };
 
   const { isVisible, handleImageClick, controls } = useAnimatedImage(200);
@@ -39,8 +44,9 @@ const App: React.FC = () => {
         links={links} 
         activeSection={activeSection} 
         sectionRefs={{ homeRef, aboutRef, servicesRef, contactRef }} 
+        formerColor={formerColor}
       />
-      <div ref={homeRef} />
+      <div  />
       {isVisible && (
         <AnimatedImage
           src="./img/astro1.png"
@@ -59,24 +65,43 @@ const App: React.FC = () => {
           }}
         />
       )}
-      <BackgroundImage
-        src="./img/spacex.jpg"
-        alt="SpaceX Background"
-        style={{
-          position: "absolute",
-          right: 0,
-          top: 0,
-          width: "50vw",
-          height: "100vh",
-          objectFit: "cover",
-          zIndex: 1,
-        }}
+      <picture>
+        <source srcSet="./img/spacex-small.jpg" media="(max-width: 600px)" />
+        <source srcSet="./img/spacex-medium.jpg" media="(max-width: 1200px)" />
+        <img
+          src="./img/spacex.jpg"
+          alt="SpaceX Background"
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: "50vw",
+            height: "100vh",
+            objectFit: "cover",
+            zIndex: 1,
+          }}
+          sizes="(max-width: 600px) 50vw, (max-width: 1200px) 50vw, 50vw"
+          loading="lazy"
+        />
+      </picture>
+      <div className="part-container">
+      <Particles 
+        particleColors={['#ffffff', '#ffffff']}
+        particleCount={200}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={true}
+        alphaParticles={false}
+        disableRotation={false}
+        ref={homeRef}
       />
-      <Hero />
+      </div>
+      {/* <Hero ref={homeRef}/> */}
       <main>
         <ScrollText baseVelocity={-0.5}>Framer Motion</ScrollText>
         <ScrollText baseVelocity={0.5}>Scroll velocity</ScrollText>
-        <About ref={aboutRef} />
+        <About ref={aboutRef} />  
         <TimeLine ref={servicesRef} />
         <Portfolio />
         <IconGrid />
