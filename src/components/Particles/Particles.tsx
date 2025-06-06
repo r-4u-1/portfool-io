@@ -2,7 +2,15 @@ import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 import './Particles.css';
 
-const defaultColors = ["#ffffff", "#ffffff", "#ffffff"];
+const defaultColors = [
+  "#ff0000", // red
+  "#00ff00", // green
+  "#0000ff", // blue
+  "#ffff00", // yellow
+  "#00ffff", // cyan
+  "#ff00ff", // magenta
+  "#ffffff"  // white
+];
 
 function hexToRgb(hex: string): [number, number, number] {
   hex = hex.replace(/^#/, "");
@@ -53,25 +61,14 @@ const vertex = /* glsl */ `
 
 const fragment = /* glsl */ `
   precision highp float;
-  
-  uniform float uTime;
-  uniform float uAlphaParticles;
-  varying vec4 vRandom;
   varying vec3 vColor;
-  
   void main() {
     vec2 uv = gl_PointCoord.xy;
     float d = length(uv - vec2(0.5));
-    
-    if(uAlphaParticles < 0.5) {
-      if(d > 0.5) {
-        discard;
-      }
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), 1.0);
-    } else {
-      float circle = smoothstep(0.5, 0.4, d) * 0.8;
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
+    if(d > 0.5) {
+      discard;
     }
+    gl_FragColor = vec4(vColor, 1.0);
   }
 `;
 

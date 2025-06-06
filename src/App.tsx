@@ -86,7 +86,6 @@ const App: React.FC = () => {
       </picture>
       <div className="part-container">
       <Particles 
-        particleColors={['#ffffff', '#ffffff']}
         particleCount={200}
         particleSpread={10}
         speed={0.1}
