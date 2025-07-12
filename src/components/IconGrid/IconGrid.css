@@ -26,7 +26,6 @@
 
   .icon-grid-container {
     position: relative;
-    inset: -1em;
     --c: 7px;
     background-color: #000;
     background-image: radial-gradient(

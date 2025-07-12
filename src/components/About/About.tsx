@@ -48,7 +48,7 @@ const About = forwardRef<HTMLDivElement, AboutProps>((_, ref) => {
                         sequential={true}
                     />
                 </h2>
-                <p>
+                <p className='about__text'>
                     <DecryptedText
                         text={description}
                         speed={50}
@@ -56,6 +56,7 @@ const About = forwardRef<HTMLDivElement, AboutProps>((_, ref) => {
                         animateOn="view"
                         revealDirection="start"
                         sequential={true}
+
                     />
                 </p>
             </div>

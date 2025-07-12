@@ -29,7 +29,7 @@ body {
   /* background: #2D2E32; */
 background: black;
 
-
+scrollbar-gutter: stable both-edges;
 
 }
 
