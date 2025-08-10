@@ -1,4 +1,3 @@
-import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "../MenuItem/MenuItem";
 import { NavLinks, tabs } from "../../shared/utils/navUtils";
