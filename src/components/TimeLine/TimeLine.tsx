@@ -1,4 +1,4 @@
-import React, {useState, forwardRef} from "react";
+import React, {useState, forwardRef, useEffect} from "react";
 import "./TimeLine.css";
 import TimeLineItem from "../TimeLineItem/TimeLineItem";
 // import { jobs } from "../../data/jobs";
@@ -17,10 +17,29 @@ interface TimeLineProps {
     ref: React.RefObject<HTMLDivElement>;
 }
 
-const jobs = await fetch('/personal.json').then(r => r.json());
+// interface IJobs {
+//   [job: number]: Job[];
+// }
 
 export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [jobs, setJobs] = useState<Job[] | null>(null);
+  const [error, setError] = useState<unknown>(null);
+
+  useEffect(() => {
+    const url = `${import.meta.env.BASE_URL}personal.json`; // works on Pages subpath
+    (async () => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setJobs(data);
+      } catch (e) {
+        setError(e as unknown);
+      }
+    })();
+  }, []);
+
       React.useEffect(() => {
         const handleResize = () => {
           const width = window.innerWidth;
@@ -42,11 +61,14 @@ export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
         };
       }, []);
   
-  const isLast = jobs.length - 1;
+  const isLast = jobs && jobs.length - 1;
+
+   if (error) return <div>Failed to load personal data.</div>;
+  if (!jobs) return <div>Loading…</div>;
 
   return (
     <div className="timeline" ref={ref}>
-      {jobs.map((job: Job, index: number) => (
+      {jobs && jobs.map((job: Job, index: number) => (
         <TimeLineItem
           key={index}
           date={job.date}
