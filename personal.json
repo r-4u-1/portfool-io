@@ -1,0 +1,38 @@
+[
+  {
+    "date": "jul, 2024 - now",
+    "heading": "Handelsbanken",
+    "content":
+      "Web developer, Testlead"
+  },
+  {
+    "date": "nov, 2022 - jul, 2024",
+    "heading": "Handelsbanken",
+    "content":
+      "Test automation"
+  },
+  {
+    "date": "jan, 2021 - nov, 2022",
+    "heading": "SEB",
+    "content":
+      "Test automation"
+  },
+  {
+    "date": "jun, 2019 - jan, 2021",
+    "heading": "Skandia",
+    "content":
+      "Test automation"
+  },
+  {
+    "date": "jul, 2015 - jun, 2019",
+    "heading": "Santander Consumer Bank",
+    "content":
+      "Test automation, Scrum master"
+  },
+  {
+    "date": "nov, 2014 - jun, 2015",
+    "heading": "Santander Consumer Bank",
+    "content":
+      "Test Engineering"
+  }
+]
