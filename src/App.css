@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato&family=Mr+Dafoe&family=Noto+Sans+Runic&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+  font-family: 'crude';
+  src: url('/src/assets/fonts/crude.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('/src/assets/fonts/jost.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bungee Hairline';
+  src: url('/src/assets/fonts/bungee-hairline.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background: #2D2E32; */
+background: black;
+
+scrollbar-gutter: stable both-edges;
+
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+}
+.spline {
+  height: 100%;
+  width: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.mount-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  width: 80%;
+}
+
+.mount-section img {
+  width: 50%;
+  height: auto;
+  box-shadow: 0 0 10px rgba(90, 198, 118, 0.8), 0 0 20px rgba(90, 198, 118, 0.6), 0 0 30px rgba(90, 198, 118, 0.4), 0 0 40px rgba(90, 198, 118, 0.2);
+  filter: brightness(150%) saturate(200%);
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+.part-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

@@ -1,0 +1,62 @@
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 20px; 
+    min-height: 100vh;
+    width: 80vw;
+    margin: 0 auto; 
+}
+
+.about__profile-img-container {
+    position: relative;
+    max-width: 80%;
+    aspect-ratio: 1/1;
+    border-radius: 35% 65% 49% 51% / 73% 23% 77% 27%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(223, 2, 244, 0.548) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+#about-me-title {
+    font-size: 5rem;
+    font-weight: bold;
+    /* font-family: "Atomic Age", system-ui; */
+    font-family: "Bungee Hairline", sans-serif;
+    text-shadow: rgba(61, 152, 205, 0.8) 2px 2px 4px, rgba(227, 0, 151, 0.6) 4px 4px 8px, rgba(149, 5, 251, 0.4) 6px 6px 12px; /* Add a glow */
+    z-index: 1;
+    mix-blend-mode: lighten; /* Ensures text integrates with the glass effect */
+  }
+
+#profile-img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.about__text-container {
+    text-align: left;
+}
+
+.about__text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f0f0f0; /* Light text color for contrast */
+    max-width: 600px; /* Limit width for readability */
+    margin-top: 20px; /* Add spacing above the text */
+    min-height: 30vh; /* Ensure text container has a minimum height */
+}
+
+@media (max-width: 700px) {
+    .about {
+        grid-template-columns: 1fr; /* Stack items vertically */
+        gap: 40px; /* Add more spacing between rows */
+    }
+
+    .about__profile-img-container {
+        max-width: 90%; /* Adjust the image size for smaller screens */
+    }
+}

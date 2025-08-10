@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ] # run whenever you push to main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Inject personal.json (from secret)
+        run: |
+          mkdir -p public
+          echo "$PERSONAL_JSON_BASE64" | base64 -d > public/personal.json
+        env:
+          PERSONAL_JSON_BASE64: ${{ secrets.PERSONAL_JSON_BASE64 }}
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist

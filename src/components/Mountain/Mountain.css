@@ -1,0 +1,160 @@
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+
+}
+
+.mount-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+  
+}
+
+.background,
+.foreground {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.foreground {
+    margin-top: 1500px;
+    transform: translateZ(-5px) scale(1.5);
+    filter: brightness(50%); /* Darken the image */
+
+}
+
+
+.background {
+    transform: translateZ(-10px) scale(2);
+
+
+}
+
+.title {
+    font-size: 7rem;
+    padding: 2rem;
+    text-shadow: 0 0 5px black;
+    margin-top: 250px;
+    transform: translateZ(-7.5px) scale(1.75);
+    width: 50%;
+}
+
+.mount-section {
+    width: 100%;
+    margin-top: 500px;
+    font-size: 2rem;
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    color: white;
+}
+/* .glowing-circle {
+    position: absolute;
+    right: 30px;
+    transform: translateZ(-8px) scale(1.85);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.4) 80%, rgba(255,255,255,0.2) 100%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-animation: glowing 1s ease-in-out infinite alternate;
+    -moz-animation: glowing 1s ease-in-out infinite alternate;
+    animation: glowing 1s ease-in-out infinite alternate;
+} */
+.glowing-circle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.4) 80%, rgba(255,255,255,0.2) 100%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-animation: glowing 1s ease-in-out infinite alternate;
+    -moz-animation: glowing 1s ease-in-out infinite alternate;
+    animation: glowing 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glowing {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+@-moz-keyframes glowing {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+@keyframes glowing {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+.container {
+    position: relative;
+    width: 90%; /* Width of the line */
+    height: 200px; /* Arbitrary, adjust as needed */
+    right: 0;
+}
+
+.line {
+    position: absolute;
+
+    
+    width: 30%; /* Length of the line */
+    height: 2px; /* Thickness of the line */
+    background-color: transparent;
+    transform-origin: left center; /* Set origin for rotation */
+    animation: rotateLine 5s linear forwards;
+    right: -300px;
+  
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.4) 80%, rgba(255,255,255,0.2) 100%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-animation: glowing 1s ease-in-out infinite alternate;
+    -moz-animation: glowing 1s ease-in-out infinite alternate;
+    animation: glowing 1s ease-in-out infinite alternate;
+    transform: translateY(-50%); /* Center circle */
+    right: 0;
+     /* Align to the end of the line */
+}
+
+@keyframes rotateLine {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-170deg);
+    }
+}
