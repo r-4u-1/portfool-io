@@ -4,8 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/portfool-io/', 
 })
-
-export default {
-  base: '/portfool-io/', // required for project pages
-}
