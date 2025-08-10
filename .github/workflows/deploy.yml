@@ -18,12 +18,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Inject personal.json (from secret)
+      - name: Inject personal.json (raw)
+        shell: bash
         run: |
           mkdir -p public
-          echo "$PERSONAL_JSON_BASE64" | base64 -d > public/personal.json
+          # write exactly what's in the secret
+          printf '%s' "$PERSONAL_JSON" > public/personal.json
+          echo "Bytes:" $(wc -c < public/personal.json)
+          head -n 1 public/personal.json || true
         env:
-          PERSONAL_JSON_BASE64: ${{ secrets.PERSONAL_JSON_BASE64 }}
+          PERSONAL_JSON: ${{ secrets.PERSONAL_JSON }}
 
       - run: npm ci
       - run: npm run build
