@@ -11,6 +11,8 @@ import {useScrollToSection} from "./hooks/useScrollToSection";
 import AnimatedImage from "./components/AnimatedImage/AnimatedImage";
 import useAnimatedImage from "./hooks/useAnimatedImage";
 import Particles from "./components/Particles/Particles";
+import { tabs } from "./shared/utils/navUtils";
+import { linksObjectBuilder } from "./shared/utils/navUtils";
 
 const App: React.FC = () => {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -20,21 +22,11 @@ const App: React.FC = () => {
 
   const sectionRefs = [homeRef, aboutRef, servicesRef, contactRef];
 
-  const tabs = [
-    { name: "HOME", color: "#f00" },
-    { name: "ABOUT", color: "#0c0" },
-    { name: "SERVICES", color: "#b1f" },
-    { name: "CONTACT", color: "#f90" },
-  ];
+
 
   const { activeSection,formerColor, scrollToSection } = useScrollToSection(sectionRefs, tabs);
 
-  const links = {
-    HOME: () => scrollToSection(0),
-    ABOUT: () => scrollToSection(1),
-    SERVICES: () => scrollToSection(2),
-    CONTACT: () => scrollToSection(3),
-  };
+  const links = linksObjectBuilder(scrollToSection);
 
   const { isVisible, handleImageClick, controls } = useAnimatedImage(200);
 
@@ -97,8 +89,8 @@ const App: React.FC = () => {
       />
       </div>
       <main>
-        <ScrollText baseVelocity={-0.5}>Framer Motion</ScrollText>
-        <ScrollText baseVelocity={0.5}>Scroll velocity</ScrollText>
+        <ScrollText baseVelocity={-0.5}>I build stuff 🏗️... and sometimes I break them ⚠️  -</ScrollText>
+        <ScrollText baseVelocity={0.5}>🧪 I find bugs 🐞... and in a good day I fix them 🎉   -</ScrollText>
         <About ref={aboutRef} />  
         <TimeLine ref={servicesRef} />
         <Portfolio />

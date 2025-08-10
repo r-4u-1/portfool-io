@@ -1,7 +1,7 @@
 import React, {useState, forwardRef} from "react";
 import "./TimeLine.css";
 import TimeLineItem from "../TimeLineItem/TimeLineItem";
-import { jobs } from "../../data/jobs";
+// import { jobs } from "../../data/jobs";
 
 interface Job {
   date: string;
@@ -16,6 +16,8 @@ interface Job {
 interface TimeLineProps {
     ref: React.RefObject<HTMLDivElement>;
 }
+
+const jobs = await fetch('/personal.json').then(r => r.json());
 
 export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);

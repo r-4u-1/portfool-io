@@ -151,6 +151,15 @@
   transition: height 0.9s ease-in-out;
 }
 
+@media (max-width: 700px) {
+  .navbar__sidebar > .background {
+    left: -10px;
+  }
+    .navbar__sidebar > button {
+      right: 25px;
+}
+}
+
 .background {
   position: absolute;
   top: 0;

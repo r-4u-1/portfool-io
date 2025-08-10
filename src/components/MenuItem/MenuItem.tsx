@@ -1,5 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import { NavLinks } from "../../shared/utils/navUtils";
+import "./MenuItem.css";
 
 const variants = {
   open: {
@@ -18,18 +20,37 @@ const variants = {
   }
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+// const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-export const MenuItem = ({ i }: { i: number}) => {
-  const style = { border: `2px solid ${colors[i]}` };
+interface IMenuItem {
+  i: number;
+  name: keyof NavLinks;
+  color: string;
+  links: NavLinks
+}
+
+export const MenuItem = ({  name, color, links }: IMenuItem) => {
+
+  const style = { border: `2px solid ${color}`,
+fontFamily: "Jost, sans-serif",
+color: `${color}`,
+textDecoration: "none" } as React.CSSProperties;
+
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="icon-placeholder" style={style} />
-      <div className="text-placeholder" style={style} />
+      <div className="icon-placeholder" style={style} >
+        {/* <img src={`./img/svg/${name.toLocaleLowerCase()}.svg`} alt={`${name} icon`} /> */}
+      </div>
+      <a className="text-placeholder" style={style} href={`#${name}`} onClick={(e)=> {
+        e.preventDefault();
+        if (typeof links[name] === "function") {
+          links[name]();
+        }
+      }}>{name} </a>
     </motion.li>
   );
 };

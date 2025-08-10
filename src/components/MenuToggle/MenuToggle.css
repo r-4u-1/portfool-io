@@ -1,4 +1,4 @@
-button {
+.menu-toggle__button {
     outline: none;
     border: none;
     -webkit-user-select: none;

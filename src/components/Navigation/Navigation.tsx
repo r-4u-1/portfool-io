@@ -9,6 +9,7 @@ import "./Navigation.css";
 import { useNavbarWidth } from "../../hooks/useNavbarWidth";
 import { useNavbarStyle } from "../../hooks/useNavbarStyle";
 import { NavbarLogo } from "../NavbarLogo/NavbarLogo";
+import { NavLinks, tabs } from "../../shared/utils/navUtils";
 
 const sidebarVariants = {
     open: (height = 1000) => ({
@@ -30,12 +31,7 @@ const sidebarVariants = {
     },
 };
 
-const tabs = [
-    { name: "HOME", color: "#f00" },
-    { name: "ABOUT", color: "#0c0" },
-    { name: "SERVICES", color: "#b1f" },
-    { name: "CONTACT", color: "#f90" },
-];
+
 
 const tabStyle: MotionStyle = {
     height: 30,
@@ -59,9 +55,7 @@ const selectionStyle: MotionStyle = {
 };
 
 interface INavigationProps {
-    links: {
-        [key: string]: () => void;
-    };
+    links: NavLinks;
     activeSection: number | null;
     sectionRefs: {
         homeRef: React.RefObject<HTMLDivElement>;
@@ -127,7 +121,7 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
                             animate={{ color: i === selected ? "#fff" : color }}
                             transition={{ duration: 0.3 }}
                             onTap={() => {
-                                handleLinkClick(links[name]);
+                                handleLinkClick(links[name as keyof NavLinks]);
                             }}
                         >
                             <span style={{ position: "relative", zIndex: 1 }}>{name}</span>
@@ -155,7 +149,7 @@ export const Navigation = ({ links, activeSection }: INavigationProps) => {
                     style={{ height: isOpen ? "100%" : "100px" }}
                 >
                     <motion.div className="background" variants={sidebarVariants} />
-                    <SideNav />
+                    <SideNav links={links}/>
                     <MenuToggle toggle={() => toggleOpen()} />
                 </motion.nav>
             )}

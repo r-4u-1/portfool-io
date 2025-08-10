@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Bungee+Hairline&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato&family=Mr+Dafoe&family=Noto+Sans+Runic&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 ul,
 li {
@@ -33,4 +34,7 @@ li {
   width: 200px;
   height: 20px;
   flex: 1;
+  font-family: 'crude ', sans-serif ;
+  -webkit-text-stroke-width: 1.5px;
+  /* -webkit-text-stroke-color: #000000; */
 }
