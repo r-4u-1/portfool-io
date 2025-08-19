@@ -39,7 +39,7 @@ const App: React.FC = () => {
         formerColor={formerColor}
       />
       <div  />
-      {isVisible && (
+      {/* {isVisible && (
         <AnimatedImage
           src="./img/astro1.png"
           alt="Astronaut Logo 1"
@@ -56,7 +56,7 @@ const App: React.FC = () => {
             zIndex: 10000,
           }}
         />
-      )}
+      )} */}
       <picture>
         <source srcSet="./img/spacex-small.jpg" media="(max-width: 600px)" />
         <source srcSet="./img/spacex-medium.jpg" media="(max-width: 1200px)" />
@@ -77,6 +77,8 @@ const App: React.FC = () => {
         />
       </picture>
       <div className="part-container">
+      <div className="cursive-text">You swiss army knife of React development</div>
+
       <Particles 
         particleCount={200}
         particleSpread={10}

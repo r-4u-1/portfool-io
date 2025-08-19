@@ -41,8 +41,8 @@ const About = forwardRef<HTMLDivElement, AboutProps>((_, ref) => {
                 <h2 id="about-me-title">
                     <DecryptedText
                         text={title}
-                        speed={50}
-                        revealDelay={50}
+                        speed={90}
+                        revealDelay={70}
                         animateOn="view"
                         revealDirection="start"
                         sequential={true}
@@ -52,7 +52,7 @@ const About = forwardRef<HTMLDivElement, AboutProps>((_, ref) => {
                     <DecryptedText
                         text={description}
                         speed={50}
-                        revealDelay={50}
+                        revealDelay={10}
                         animateOn="view"
                         revealDirection="start"
                         sequential={true}
