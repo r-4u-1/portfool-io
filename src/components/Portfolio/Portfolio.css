@@ -1,9 +1,27 @@
+
+.portfolio-section {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 .portfolio-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 80px;
     margin: 100px;
+}
+
+.portfolio-title {
+     font-size: 3rem;
+    font-weight: bold;
+    /* font-family: "Atomic Age", system-ui; */
+    font-family: "Bungee Hairline", sans-serif;
+    text-shadow: rgba(61, 152, 205, 0.8) 2px 2px 4px, rgba(227, 0, 151, 0.6) 4px 4px 8px, rgba(149, 5, 251, 0.4) 6px 6px 12px; /* Add a glow */
+    z-index: 1;
+    mix-blend-mode: lighten; /* Ensures text integrates with the glass effect */
 }
 /* 
 .project-card {
