@@ -77,7 +77,7 @@ const App: React.FC = () => {
         />
       </picture>
       <div className="part-container">
-      <div className="cursive-text">You swiss army knife of React development</div>
+      <div className="cursive-text">Your swiss army knife of web development</div>
 
       <Particles 
         particleCount={200}

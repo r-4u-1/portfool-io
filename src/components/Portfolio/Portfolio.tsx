@@ -82,7 +82,9 @@ const Portfolio: React.FC = () => {
     }
 
     return (
-        <section className="portfolio-container" aria-label="Project portfolio">
+        <section className='portfolio-section'>
+            <h2 className="portfolio-title">My Public Repos</h2>
+        <div className="portfolio-container" aria-label="Project portfolio">
             {projects.map(project => (
                 <ProjectCard
                     key={project.id}
@@ -91,6 +93,7 @@ const Portfolio: React.FC = () => {
                     url={project.link}
                 />
             ))}
+        </div>
         </section>
     );
 };

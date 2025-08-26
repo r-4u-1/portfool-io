@@ -1,9 +1,10 @@
 import React, {useState, forwardRef, useEffect} from "react";
 import "./TimeLine.css";
 import TimeLineItem from "../TimeLineItem/TimeLineItem";
+import { getServices, GetServicesResult } from "./utils/timeLineUtils";
 // import { jobs } from "../../data/jobs";
 
-interface Job {
+export interface Job {
   date: string;
   heading: string;
   content: string;
@@ -27,15 +28,12 @@ export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
-    const url = `${import.meta.env.BASE_URL}personal.json`; // works on Pages subpath
     (async () => {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        setJobs(data);
-      } catch (e) {
-        setError(e as unknown);
+      const fetchData: GetServicesResult = await getServices(setError);
+      if ("jobs" in fetchData && Array.isArray(fetchData.jobs)) {
+        setJobs(fetchData.jobs);
+      } else {
+        setError("Failed to fetch jobs data.");
       }
     })();
   }, []);
