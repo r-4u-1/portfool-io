@@ -12,6 +12,7 @@ export async function getServices(
       if (!res.ok) throw new Error("Mock request failed");
       jobs = await res.json();
     } else {
+      const res = await fetch("/api/services");
       if (!res.ok) throw new Error(`Request failed with status ${res.status}: ${res.statusText}`);
       jobs = await res.json();
     }
