@@ -8,8 +8,8 @@ import IconGrid from "./components/IconGrid/IconGrid";
 import Footer from "./components/Footer/Footer";
 import React, { useRef } from "react";
 import {useScrollToSection} from "./hooks/useScrollToSection";
-import AnimatedImage from "./components/AnimatedImage/AnimatedImage";
-import useAnimatedImage from "./hooks/useAnimatedImage";
+// import AnimatedImage from "./components/AnimatedImage/AnimatedImage";
+// import useAnimatedImage from "./hooks/useAnimatedImage";
 import Particles from "./components/Particles/Particles";
 import { tabs } from "./shared/utils/navUtils";
 import { linksObjectBuilder } from "./shared/utils/navUtils";
@@ -28,7 +28,7 @@ const App: React.FC = () => {
 
   const links = linksObjectBuilder(scrollToSection);
 
-  const { isVisible, handleImageClick, controls } = useAnimatedImage(200);
+  // const { isVisible, handleImageClick, controls } = useAnimatedImage(200);
 
   return (
     <div id="home">
