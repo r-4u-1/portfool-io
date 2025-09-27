@@ -21,7 +21,13 @@ export default defineConfig(({ mode }) => {
         configureServer(server) {
           if (!useMock) return;
 
+          server.middlewares.use((req, res, next) => {
+            // Example mock middleware logic
+            if (req.url === '/mock-endpoint') {
+              res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify({ error: 'Failed to parse SERVICES environment variable as JSON' }));
+            } else {
+              next();
             }
           });
         },
