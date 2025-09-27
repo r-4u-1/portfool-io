@@ -65,6 +65,8 @@ export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
   if (!jobs) return <div>Loading…</div>;
 
   return (
+    <>
+    <h2 className="timeline-header">Experience</h2>
     <div className="timeline" ref={ref}>
       {jobs && jobs.map((job: Job, index: number) => (
         <TimeLineItem
@@ -80,5 +82,6 @@ export const TimeLine = forwardRef<HTMLDivElement, TimeLineProps>((_, ref) => {
         />
       ))}
     </div>
+    </>
   );
 });
