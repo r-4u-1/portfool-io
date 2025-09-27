@@ -48,6 +48,7 @@ const IconGrid: React.FC = () => {
 
   return (
     <div className='icon-grid-container'>
+      <h2 className="icon-grid-title">Technologies & Tools</h2>
       <div className="icon-grid">
         {icons.map((icon, index) => (
           <div key={index} className="icon-container" style={{ backgroundColor: getRandomColor() }}>

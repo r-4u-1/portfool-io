@@ -5,6 +5,27 @@
     gap: 20px;
     padding: 20px;
   }
+
+  .icon-grid-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Bungee Hairline", sans-serif;
+    text-align: center;
+    /* Center the title block and add padding for the glass background */
+    display: block;
+    width: fit-content;
+    margin: 16px auto 20px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: white;
+    text-shadow: rgba(61, 152, 205, 0.8) 2px 2px 4px, rgba(227, 0, 151, 0.6) 4px 4px 8px, rgba(149, 5, 251, 0.4) 6px 6px 12px; /* Add a glow */
+    z-index: 1;
+    /* Apply glass background directly (no absolute positioning) */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(2px) saturate(125%);
+    -webkit-backdrop-filter: blur(2px) saturate(125%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
   
   .icon-container {
     width: 100px;
