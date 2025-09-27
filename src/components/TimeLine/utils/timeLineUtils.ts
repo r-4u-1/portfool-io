@@ -12,9 +12,7 @@ export async function getServices(
       if (!res.ok) throw new Error("Mock request failed");
       jobs = await res.json();
     } else {
-      const url = `${import.meta.env.BASE_URL}personal.json`;
-      const res = await fetch(url);
-      if (!res.ok) throw res;
+      if (!res.ok) throw new Error(`Request failed with status ${res.status}: ${res.statusText}`);
       jobs = await res.json();
     }
     return { jobs };

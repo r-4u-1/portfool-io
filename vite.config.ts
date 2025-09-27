@@ -21,14 +21,7 @@ export default defineConfig(({ mode }) => {
         configureServer(server) {
           if (!useMock) return;
 
-          server.middlewares.use('/api/services', (req, res) => {
-            try {
-              const data = JSON.parse(env.SERVICES ?? '[]');
-              res.setHeader('Content-Type', 'application/json');
-              res.end(JSON.stringify(data));
-            } catch {
-              res.statusCode = 500;
-              res.end(JSON.stringify({ error: 'Invalid SERVICES' }));
+              res.end(JSON.stringify({ error: 'Failed to parse SERVICES environment variable as JSON' }));
             }
           });
         },
